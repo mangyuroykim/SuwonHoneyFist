@@ -1,0 +1,16 @@
+package org.SuwonHoneyFist.day02.operator.exercise;
+
+import java.util.Scanner;
+
+public class Exercise_Logical2 {
+	public static void main(String [] args) {
+		char a = 'A'+1;
+//		char는 '' 쓰고 String은 "" 씀
+		a = 'a'+1;
+		System.out.println(a);
+		
+		
+	
+	}
+
+}

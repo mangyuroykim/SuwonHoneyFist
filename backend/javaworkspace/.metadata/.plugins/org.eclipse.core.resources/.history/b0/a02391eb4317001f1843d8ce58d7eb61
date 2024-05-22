@@ -1,0 +1,9 @@
+package org.SuwonHoneyFist.day03.loop.exercise;
+
+import java.util.Scanner;
+
+public class Exercise_Loop_2_1 {
+	public static void main(String[] args) {
+	
+	}
+	

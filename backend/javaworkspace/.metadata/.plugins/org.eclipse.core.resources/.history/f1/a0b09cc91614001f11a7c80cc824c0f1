@@ -1,0 +1,11 @@
+package org.SuwonHoneyFist.day01.basic;
+
+public class Exam_Constant {
+	public static void main(String [] args) {
+		//변수는 소문자로 시작!
+		//상수는 모두 대문자~
+		final double PI = 3.141519;
+		
+		PI = 3.24;
+	}
+}

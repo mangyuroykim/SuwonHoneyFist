@@ -1,0 +1,7 @@
+package org.SuwonHoneyFist.day02.printbasic;
+
+public class Exam_PrintSample {
+	public static void main(String [] args) {
+		
+	}
+}

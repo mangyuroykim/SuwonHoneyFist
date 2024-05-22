@@ -1,0 +1,19 @@
+package org.SuwonHoneyFist.day04.control.loop;
+
+public class Exam_ForDouble {
+	public static void main(String [] args) {
+		// 중첩 for문 - for문 안의 for문
+		// 문법
+		// for ( ) { for( ) { } }
+		
+		System.out.println("2 * 2 = 4");
+		System.out.println("2 * 3 = 6");
+		System.out.println("2 * 4 = 8");
+		System.out.println("2 * 5 = 10");
+		System.out.println("2 * 6 = 12");
+		System.out.println("2 * 7 = 14");
+		System.out.println("2 * 8 = 16");
+		System.out.println("2 * 9 = 18");
+
+	}
+}

@@ -1,0 +1,16 @@
+package org.SuwonHoneyFist.day01.inputsc;
+
+import java.util.Scanner;
+
+public class Exam_ScannerTest {
+	public static void main(String [] args) {
+		//System.out.println("Test");
+		Scanner sc = new Scanner(System.in);
+		
+		//스캐너에 동작값을 아직 입력안해서 그 다음단계로 이동이 안되고 있는것//
+		System.out.println("하나의 수를 입력해주시요.");
+		int a = sc.nextInt();
+		System.out.println("a의 값 : "+a);
+	}
+
+}

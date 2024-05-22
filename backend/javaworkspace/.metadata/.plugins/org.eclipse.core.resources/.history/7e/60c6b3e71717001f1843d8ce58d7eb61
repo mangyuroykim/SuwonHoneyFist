@@ -1,0 +1,6 @@
+package org.SuwonHoneyFist.day03.loop.exercise;
+
+public class Exercise_For2 {
+	public static void main(String [] args);
+		// 1부터 
+}

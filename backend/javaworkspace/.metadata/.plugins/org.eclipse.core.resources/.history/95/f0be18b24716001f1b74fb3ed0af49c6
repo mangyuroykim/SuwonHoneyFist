@@ -1,0 +1,53 @@
+package org.SuwonHoneyFist.day02.operator;
+
+public class Exam_Unary {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 단항 연산자 
+		// a++, ++a -> a = a + 1;
+		int a1 = 1;
+	    System.out.println(++a1);
+	    System.out.println(a1++);
+	    System.out.println(a1);
+	    // 문제1
+	    // a가 10, b는 20, c는 30입니다.
+	    // a++;
+	    // b = (--a) + b;
+	    // c = (a++) + (--b);
+	    // a,b,c의 값은 얼마일까요?
+	    // a = ?, b = ?, c = ?
+	    int a = 10;
+	    int b = 20;
+	    int c = 30;
+	    a++;
+	    b= (--a) + b;
+	    c = (a++) + (--b);
+	   
+	    System.out.println(a);
+	    System.out.println(b);
+	    System.out.println(c);
+	 // a = 11; b=29; c = 39;
+	    /**1. 정수형 변수 a,b,c 3개를 만든 후 각각
+	     * 10,20,30 을 입력받아, 다음 연산을 수행하는
+	     * 식을 작성하고 a,b,c의 결과값을 출력하세요
+	     * a = 10
+	     * b = 20
+	     * c = 30
+	     * 
+	     */
+	    int a = 10;
+	    int b = 20;
+	    int c = 30;
+	    
+	    a++;
+	    b = (--a) + b;
+	    c = (a++) + (--b);
+	    
+	    System.out.println();
+	    System.out.println();		
+	    System.out.println();
+	    // a = 10 , b = 29 , c = 39
+	}
+		
+}

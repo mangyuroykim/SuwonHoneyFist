@@ -1,0 +1,9 @@
+package org.SuwonHoneyFist.day01.printbasic;
+
+public class Exam_PrintSample {
+	public static void main (String [] args) {
+		System.out.print("지금까지와는 다른 출력 명령어")
+		System.out.println("지금까지는 쓰던 출력 명령어")
+	}
+
+}

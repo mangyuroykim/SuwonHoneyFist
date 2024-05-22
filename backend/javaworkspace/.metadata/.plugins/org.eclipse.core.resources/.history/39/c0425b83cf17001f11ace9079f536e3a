@@ -1,0 +1,7 @@
+package org.SuwonHoneyFist.day04.control.loop;
+
+public class Exam_ForDouble {
+	public static void main(String [] args) {
+		// 중첩 for문
+	}
+}
