@@ -1,0 +1,15 @@
+package jaseupsigan;
+
+import java.util.Scanner;
+
+public class Jaseupsigan_practice2 {
+	public static void main(String [] args) {
+		//예제2. 입력받은 정수가 양의 정수인지, 음의 정수인지, 아니면 0인지 판별하는 프로그램을 작성하시오.
+				//삼항 연산자 이용하여 작성해보기
+		Scanner sc = new Scanner(System.in);
+		System.out.println("정수값을 입력하세요.");
+		int input = sc.nextInt();
+		String result = (input == 0) ? "0" : (input > 0) ? "양의정수" : "음의 정수"; 
+		System.out.println(result + " 입니다.");
+	}
+}	
