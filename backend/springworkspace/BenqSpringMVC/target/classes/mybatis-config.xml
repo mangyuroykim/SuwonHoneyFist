@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- NULL일 때 NULL로 인식하도록 함 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- underscore 표기법을 camel 표기법으로 변경 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<!-- VO만들어질때마다 추가 -->
+	<typeAliases>
+		<typeAlias type="com.benq.spring.member.domain.MemberVO" alias="Member"/>
+		<typeAlias type="com.benq.spring.notice.domain.NoticeVO" alias="Notice"/>
+		<typeAlias type="com.benq.spring.board.domain.BoardVO" alias="Board"/>
+		<typeAlias type="com.benq.spring.reply.domain.ReplyVO" alias="Reply"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/board-mapper.xml"/>
+		<mapper resource="mappers/reply-mapper.xml"/>
+	</mappers>
+</configuration>

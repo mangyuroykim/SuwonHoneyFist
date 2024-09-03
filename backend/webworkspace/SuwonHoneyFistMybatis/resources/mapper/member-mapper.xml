@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="MemberMapper">
+ 	<resultMap type="com.SuwonHoneyFist.member.model.vo.Member" id="memberResultMap">
+ 		<id property="memberID" column="MEMBER_ID"/>
+ 		<result property="memberPW" column="MEMBER_PW"/>
+ 		<result property="memberNAME" column="MEMBER_NAME"/>
+ 		<result property="memberGENDER" column="GENDER"/>
+ 		<result property="age" column="AGE"/>
+ 		<result property="email" column="EMAIL"/>
+ 		<result property="phone" column="PHONE"/>
+ 		<result property="address" column="ADDRESS"/>
+ 		<result property="hobby" column="HOBBY"/>
+ 		<result property="regDate" column="REG_DATE"/>
+ 		<!-- 맨날 누락하는 부분임 속성이랑 아이디가 동일하면 생략가능 -->
+ 		
+ 	</resultMap>
+ 	<insert id="insertMember">
+ 		INSERT INTO MEMBER_TBL
+ 		VALUES(#{memberID}, #{memberPW}, #{memberNAME}, #{memberGENDER}, #{age}, #{email}, #{phone}, #{address}, #{hobby}, DEFAULT)
+ 	</insert>
+ 	<select id="checkLogin" resultMap="memberResultMap">
+ 	SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = #{memberID} AND MEMBER_PW = #{memberPW}</select>
+ 	<select id="selectOneById" resultMap="memberResultMap">
+ 	SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = #{memberID}</select>
+ </mapper>

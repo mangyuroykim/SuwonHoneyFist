@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" 		 value="BENQSPRING"></property>
+		<property name="password" 		 value="BENQSPRING"></property>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="dataSource"     ref="dataSource"></property>
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+	<!-- 파일 업로드 관련 빈 등록 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000"></property>
+		<property name="maxUploadSizePerFile" value="100000000"></property>
+		<property name="maxInMemorySize" value="100000000"></property>
+		<!-- 
+			maxUploadSize : 한 요청당 업로드가 허용되는 최대 용량을 바이트 단위로 설정, -1 하면 제한없음
+			maxUploadSizePerFile : 한 파일당 업로드가 허용되는 최대 용량을 바이트 단위로 설정, -1하면 제한 없음
+			maxInMemorySize : 디스크에 저장하지 않고 메모리에 유지하도록 허용하는 바이트 단위
+		 -->
+	</bean>
+</beans>

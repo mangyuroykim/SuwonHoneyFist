@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.benq.boot.notice.model.mapper.NoticeMapper">
+	<resultMap id="notice_resultmap" type="Notice">
+		<id property="noticeNo" column="NOTICE_NO" />
+		<association property="noticeFile"
+					javaType="NoticeFile"
+					select="selectNoticeFile"
+					column="NOTICE_NO"/>
+	</resultMap>
+<!-- 	<mapper namespace="NoticeMapper"> -->
+	<!-- 
+		$와 #의 차이점
+		#을 쓰면 문자열이 됨 ''로 감싸주는것같은 효과,
+		$을 쓰면 전달받은 값 그대로
+	 -->
+	 
+<!--	Notice File 쿼리문-->
+	<insert id="insertNoticeFile">
+		INSERT INTO NOTICE_FILE_TBL
+		VALUES(SEQ_FILE_NO.NEXTVAL, #{fileName}, #{fileRename}, #{filePath}, #{noticeNo})
+	</insert>
+	<select id="selectNoticeFile" resultType="NoticeFile">
+		SELECT * FROM NOTICE_FILE_TBL WHERE NOTICE_NO = #{noticeNo}
+	</select>
+<!-- 	공지사항 파일 조회 -->
+	<select id="selectNoticeFIle" resultType="NoticeFile">
+		SELECT * FROM NOTICE_FILE_TBL WHERE NOTICE_NO = #{noticeNo}
+	</select>
+<!--	Notice 쿼리문-->
+	<insert id="insertNotice" useGeneratedKeys="true">
+<!-- 	INSERT INTO ${insert_table_name} 중괄호 안에는 동적으로 값이 변환 -->
+		<selectKey order="BEFORE" resultType="_int" keyProperty="noticeNo">
+			SELECT SEQ_NOTICE_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	    INSERT INTO NOTICE_TBL
+<!-- 	    VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeSubject}, #{noticeContent}, #{noticeWriter}, DEFAULT, DEFAULT, DEFAULT) -->
+		VALUES(#{noticeNo}, #{noticeSubject}, #{noticeContent}, #{noticeWriter},DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+	<select id="selectOne" resultMap="notice_resultmap">
+	    SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo }
+	</select>
+	<select id="selectList" resultType="Notice">
+	    SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC
+	</select>
+	<select id = "getTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM NOTICE_TBL
+	</select>
+	<update id="updateNotice">
+		UPDATE NOTICE_TBL
+		SET NOTCE_SUBJECT = #{noticeSubject}, NOTICE_CONTENT = #{noticeContent}
+		WHERE NOTICE_NO = #{noticeNo}
+	</update>
+	<delete id="deleteNotice">
+		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo}
+	</delete>
+</mapper>

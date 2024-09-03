@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           https://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop 
+                           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+    <!-- Root Context: defines shared resources visible to all other web components -->
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="BENQSPRING"/>
+        <property name="password" value="BENQSPRING"/>
+    </bean>
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+    <!-- 
+	* PointCut 표현식 정리(execution 생략)
+	1. * org.kh.member.model.service.*.*(..) 
+	 -> service패키지에 있는 모든 클래스 및 모든 메소드 ( 매개변수는 0개 이상)
+	2. * org.kh.member.model.service..*.*(..)
+	 -> service패키지 및 하위 패키지에 있는 모든 클래스 및 모든 메소드 (매개변수는 0개 이상)
+	3. * org.kh.member.model.service..*.*()
+	 -> service패키지 및 하위 패키지에 있는 모든 클래스 및 모든 메소드 (매개변수 없는 것)
+	4. * org.kh.member.model.service..*.*(*)
+	 -> service패키지 및 하위 패키지에 있는 모든 클래스 및 모든 메소드 (매개변수 1개)
+	5. * org.kh.member.model.service..*.*(Integer,..)
+	 -> service패키지 및 하위 패키지에 있는 모든 클래스 및 모든 메소드
+	 ( 매개변수가 1개 이상이고, 첫번째 파라미터는 정수 )
+	6. int org.kh.member.service..*.*(Integer,..)
+	 -> 리턴타입이 int이고 service패키지 및 하위 패키지에 있는 모든 클래스 및 모든 메소드
+	 ( 매개변수가 1개 이상이고, 첫번째 파라미터는 정수)
+	7. int org.kh.member.service..*Impl.*(..)
+	 -> 리턴타입이 int이고 service패키지 및 하위 패키지에 있는 Impl로 끝나는 클래스의 모든 메소드
+	 	(매개변수는 0개 이상)
+ -->
+
+
+    <!-- xml로 aop 구현 -->
+    <bean id="goWork" class="com.benq.aop.common.GoWorkAdvice"></bean>
+    <bean id="leaveWork" class="com.benq.aop.common.LeaveWorkAdvice"></bean>
+    <bean id="stopWatch" class="com.benq.aop.common.StopWatchAdvice"></bean>
+    <aop:config>
+        <aop:pointcut expression="execution(* com.benq.aop..*Controller.*(..))" id="allPointCut"/>
+    	<aop:pointcut expression="execution(* com.benq.aop..*ServiceImpl.checkLogi(..))" id="implPointCut"/>
+    	<aop:pointcut expression="execution(* com.benq.aop..*Controller.checkLogout(..))" id="ctrlPointCut"/>   	
+    	<aop:aspect ref="stopWatch">
+    		<aop:around method="checkTime" pointcut-ref="allPointCut"/>
+    	</aop:aspect>
+    	<aop:aspect ref="leaveWork">
+    		<aop:before method="printLeaveWorkTime" pointcut-ref="ctrlPointCut"/>
+		</aop:aspect>
+    	<aop:aspect ref="goWork">
+    		<aop:after method="printGoWorkTime" pointcut-ref="allPointCut"/>
+    	</aop:aspect>
+    </aop:config>
+</beans>
