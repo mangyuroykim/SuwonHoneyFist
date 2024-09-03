@@ -26,29 +26,32 @@ public class Exercise_if {
 			else {
 				System.out.println("불합격");
 			}
-		}
 	}
+}
+//		/* Scanner sc = new Scanner(system.in);
+//		System.out.print("점수를 입력하세요(0~100) : ");
+//		int score = sc.nextInt();
+//		System.out.println();
+//		System.out.print("학년을 입력하세요 (1~4) : ");
+//		int grade = sc.nextint();
+//		
+//		if(grade < 4 && score >= 60) {
+//		//합격 출력
+//		 * System.out.println ("합격입니다.");
+//		}else if(grade == 4 && score >= 70) {
+//		//합격 출력
+//			System.out.println("합격입니다.")
+//		}else {
+//		//불합격 출력
+//		 * System.out.println("불합격입니다."
+//		}
+//		 
+//		if(grade != 4) {
+//		if(score >= 60) {
+//		//합격출력
+//		
+//		}
+//	
+//}
 
 
-	/* Scanner sc = new Scanner(system.in);
-		System.out.print("점수를 입력하세요(0~100) : ");
-		int score = sc.nextInt();
-		System.out.println();
-		System.out.print("학년을 입력하세요 (1~4) : ");
-		int grade = sc.nextint();
-		
-		if(grade < 4 && score >= 60) {
-		//합격 출력
-		 * System.out.println ("합격입니다.");
-		}else if(grade == 4 && score >= 70) {
-		//합격 출력
-			System.out.println("합격입니다.")
-		}else {
-		//불합격 출력
-		 * System.out.println("불합격입니다."
-		}
-		 
-		if(grade != 4) {
-		if(score >= 60) {
-		//합격출력
-		

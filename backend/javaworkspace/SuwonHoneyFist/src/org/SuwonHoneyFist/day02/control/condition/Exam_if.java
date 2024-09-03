@@ -60,4 +60,5 @@ public class Exam_if {
 		} else {
 			System.out.println("입력값은 0입니다.");
 		}
-			
+	}
+}

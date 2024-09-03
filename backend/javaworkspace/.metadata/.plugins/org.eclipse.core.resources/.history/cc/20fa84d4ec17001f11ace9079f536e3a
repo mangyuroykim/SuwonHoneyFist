@@ -1,7 +1,0 @@
-package org.SuwonHoneyFist.day04.array.practice;
-
-public class Practice_Array2 {
-	public static void main(String [] args) {
-		
-	}
-}

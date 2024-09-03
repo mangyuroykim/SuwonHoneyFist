@@ -1,7 +1,0 @@
-package org.SuwonHoneyFist.day02.operator.exercise;
-
-public class Exercise_Logical1 {
-	public static void main(String [] args) {
-		
-	}
-}

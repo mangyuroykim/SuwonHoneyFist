@@ -1,7 +1,0 @@
-package org.SuwonHoneyFist.day04.control.loop.exercise;
-
-public class Exercise_forDouble2 {
-	public static void main(String [] args) {
-		
-	}
-}

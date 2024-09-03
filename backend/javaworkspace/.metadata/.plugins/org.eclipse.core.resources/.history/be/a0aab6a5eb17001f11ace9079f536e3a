@@ -1,8 +1,0 @@
-package org.SuwonHoneyFist.day04.array.practice;
-
-public class Practice_Array1 {
-	public static void main(String[] args) {
-		// 문제 1
-		// 길이 10
-	}
-}
